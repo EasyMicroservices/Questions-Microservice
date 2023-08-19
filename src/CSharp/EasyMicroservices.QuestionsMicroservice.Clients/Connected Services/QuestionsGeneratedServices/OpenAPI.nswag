@@ -3,7 +3,7 @@
   "defaultVariables": null,
   "documentGenerator": {
     "fromDocument": {
-      "url": "http://localhost:1042/swagger/v1/swagger.json",
+      "url": "http://localhost:2002/swagger/v1/swagger.json",
       "output": "OpenAPI.nswag.json",
       "newLineBehavior": "Auto"
     }
@@ -55,7 +55,7 @@
       "wrapResponseMethods": [],
       "generateResponseClasses": true,
       "responseClass": "SwaggerResponse",
-      "namespace": "Comments.GeneratedServices",
+      "namespace": "Questions.GeneratedServices",
       "requiredPropertiesMustBeDefined": true,
       "dateType": "System.DateTimeOffset",
       "jsonConverters": [],
@@ -78,7 +78,7 @@
       "handleReferences": false,
       "generateImmutableArrayProperties": false,
       "generateImmutableDictionaryProperties": false,
-      "jsonSerializerSettingsTransformationMethod": "new EasyMicroservices.CommentsMicroservice.Clients.MyJsonSerializerSettings",
+      "jsonSerializerSettingsTransformationMethod": "new EasyMicroservices.QuestionsMicroservice.Clients.MyJsonSerializerSettings",
       "inlineNamedArrays": false,
       "inlineNamedDictionaries": false,
       "inlineNamedTuples": true,

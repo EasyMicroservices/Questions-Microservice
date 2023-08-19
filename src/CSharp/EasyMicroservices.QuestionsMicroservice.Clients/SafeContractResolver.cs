@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Serialization;
 using System.Reflection;
 
-namespace EasyMicroservices.CommentsMicroservice.Clients
+namespace EasyMicroservices.QuestionsMicroservice.Clients
 {
     internal class SafeContractResolver : DefaultContractResolver
     {
