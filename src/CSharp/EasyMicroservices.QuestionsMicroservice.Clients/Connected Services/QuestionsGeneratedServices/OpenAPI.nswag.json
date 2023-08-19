@@ -1,0 +1,1143 @@
+﻿{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "EasyMicroservices.QuestionsMicroservice.WebApi",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Answer/Add": {
+      "post": {
+        "tags": [
+          "Answer"
+        ],
+        "operationId": "Add",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAnswerRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAnswerRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAnswerRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int64MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int64MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int64MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Answer/Update": {
+      "put": {
+        "tags": [
+          "Answer"
+        ],
+        "operationId": "Update",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAnswerRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAnswerRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAnswerRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Answer/GetById": {
+      "post": {
+        "tags": [
+          "Answer"
+        ],
+        "operationId": "GetById",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Answer/GetByUniqueIdentity": {
+      "post": {
+        "tags": [
+          "Answer"
+        ],
+        "operationId": "GetByUniqueIdentity",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Answer/HardDeleteById": {
+      "delete": {
+        "tags": [
+          "Answer"
+        ],
+        "operationId": "HardDeleteById",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Answer/SoftDeleteById": {
+      "delete": {
+        "tags": [
+          "Answer"
+        ],
+        "operationId": "SoftDeleteById",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Answer/GetAll": {
+      "get": {
+        "tags": [
+          "Answer"
+        ],
+        "operationId": "GetAll",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerContractListMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerContractListMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerContractListMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Answer/GetAllByUniqueIdentity": {
+      "post": {
+        "tags": [
+          "Answer"
+        ],
+        "operationId": "GetAllByUniqueIdentity",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerContractListMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerContractListMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnswerContractListMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Question/GetById": {
+      "post": {
+        "tags": [
+          "Question"
+        ],
+        "operationId": "GetById2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Question/GetByUniqueIdentity": {
+      "post": {
+        "tags": [
+          "Question"
+        ],
+        "operationId": "GetByUniqueIdentity2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Question/Add": {
+      "post": {
+        "tags": [
+          "Question"
+        ],
+        "operationId": "Add2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateQuestionRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateQuestionRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateQuestionRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int64MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int64MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int64MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Question/Update": {
+      "put": {
+        "tags": [
+          "Question"
+        ],
+        "operationId": "Update2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateQuestionRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateQuestionRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateQuestionRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Question/HardDeleteById": {
+      "delete": {
+        "tags": [
+          "Question"
+        ],
+        "operationId": "HardDeleteById2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Question/SoftDeleteById": {
+      "delete": {
+        "tags": [
+          "Question"
+        ],
+        "operationId": "SoftDeleteById2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Question/GetAll": {
+      "get": {
+        "tags": [
+          "Question"
+        ],
+        "operationId": "GetAll2",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionContractListMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionContractListMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionContractListMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Question/GetAllByUniqueIdentity": {
+      "post": {
+        "tags": [
+          "Question"
+        ],
+        "operationId": "GetAllByUniqueIdentity2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionContractListMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionContractListMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionContractListMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AnswerContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "questionId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          },
+          "uniqueIdentity": {
+            "type": "string",
+            "nullable": true
+          },
+          "creationDateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modificationDateTime": {
+            "title": "Nullable<DateTime>",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "deletedDateTime": {
+            "title": "Nullable<DateTime>",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "isDeleted": {
+            "type": "boolean"
+          }
+        }
+      },
+      "AnswerContractListMessageContract": {
+        "title": "MessageContract<List`1>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorContract"
+          },
+          "result": {
+            "title": "List<AnswerContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/AnswerContract"
+            }
+          }
+        }
+      },
+      "AnswerContractMessageContract": {
+        "title": "MessageContract<AnswerContract>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorContract"
+          },
+          "result": {
+            "$ref": "#/components/schemas/AnswerContract"
+          }
+        }
+      },
+      "CreateAnswerRequestContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "questionId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          },
+          "uniqueIdentity": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "CreateQuestionRequestContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "uniqueIdentity": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ErrorContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "validations": {
+            "title": "List<ValidationContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/ValidationContract"
+            }
+          },
+          "failedReasonType": {
+            "$ref": "#/components/schemas/FailedReasonType"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "endUserMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "details": {
+            "type": "string",
+            "nullable": true
+          },
+          "stackTrace": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "FailedReasonType": {
+        "type": "integer",
+        "format": "int32",
+        "x-enumNames": [
+          "None",
+          "Default",
+          "All",
+          "Other",
+          "Unknown",
+          "Nothing",
+          "SessionAccessDenied",
+          "AccessDenied",
+          "InternalError",
+          "Dupplicate",
+          "Empty",
+          "NotFound",
+          "ValidationsError",
+          "StreamError",
+          "WebServiceNotWorking",
+          "Incorrect",
+          "OperationFailed"
+        ],
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      },
+      "GetUniqueIdentityRequestContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "uniqueIdentity": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "Int64DeleteRequestContract": {
+        "title": "DeleteRequestContract<Int64>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Int64GetIdRequestContract": {
+        "title": "GetIdRequestContract<Int64>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Int64MessageContract": {
+        "title": "MessageContract<Int64>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorContract"
+          },
+          "result": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Int64SoftDeleteRequestContract": {
+        "title": "SoftDeleteRequestContract<Int64>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "isDelete": {
+            "type": "boolean"
+          }
+        }
+      },
+      "MessageContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorContract"
+          }
+        }
+      },
+      "QuestionContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "creationDateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "modificationDateTime": {
+            "title": "Nullable<DateTime>",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "deletedDateTime": {
+            "title": "Nullable<DateTime>",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "uniqueIdentity": {
+            "type": "string",
+            "nullable": true
+          },
+          "isDeleted": {
+            "type": "boolean"
+          }
+        }
+      },
+      "QuestionContractListMessageContract": {
+        "title": "MessageContract<List`1>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorContract"
+          },
+          "result": {
+            "title": "List<QuestionContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/QuestionContract"
+            }
+          }
+        }
+      },
+      "QuestionContractMessageContract": {
+        "title": "MessageContract<QuestionContract>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorContract"
+          },
+          "result": {
+            "$ref": "#/components/schemas/QuestionContract"
+          }
+        }
+      },
+      "UpdateAnswerRequestContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "questionId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          },
+          "uniqueIdentity": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "UpdateQuestionRequestContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "uniqueIdentity": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ValidationContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      }
+    }
+  }
+}

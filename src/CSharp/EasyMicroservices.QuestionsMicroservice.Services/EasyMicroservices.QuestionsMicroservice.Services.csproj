@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>EasyMicroservices.QuestionsMicroservice</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EasyMicroservices.QuestionsMicroservice.Logics\EasyMicroservices.QuestionsMicroservice.Logics.csproj" />
+  </ItemGroup>
+
+</Project>
