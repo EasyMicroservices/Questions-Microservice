@@ -1,5 +1,5 @@
-﻿using EasyMicroservices.CommentsMicroservice.Helpers;
-using EasyMicroservices.CommentsMicroservice.Interfaces;
+﻿using EasyMicroservices.QuestionsMicroservice.Helpers;
+using EasyMicroservices.QuestionsMicroservice.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

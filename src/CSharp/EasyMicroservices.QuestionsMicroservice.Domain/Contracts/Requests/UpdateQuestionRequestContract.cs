@@ -10,5 +10,7 @@ namespace EasyMicroservices.QuestionsMicroservice.Contracts.Requests
     {
         public long Id { get; set; }
         public string Title { get; set; }
+        public string UniqueIdentity { get; set; }
+
     }
 }

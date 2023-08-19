@@ -9,5 +9,7 @@ namespace EasyMicroservices.QuestionsMicroservice.Contracts.Requests
     public class CreateQuestionRequestContract
     {
         public string Title { get; set; }
+        public string UniqueIdentity { get; set; }
+
     }
 }

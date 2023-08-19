@@ -11,7 +11,7 @@ namespace EasyMicroservices.QuestionsMicroservice.Contracts.Common
     {
         public long Id { get; set; }
         public long QuestionId { get; set; }
-        public string Title { get; set; }
+        public string Content { get; set; }
         public string UniqueIdentity { get; set; }
         public DateTime CreationDateTime { get; set; }
         public DateTime? ModificationDateTime { get; set; }

@@ -1,7 +1,7 @@
 using EasyMicroservices.Laboratory.Engine;
 using EasyMicroservices.Laboratory.Engine.Net.Http;
 
-namespace EasyMicroservices.CommentsMicroservice.Clients.Tests
+namespace EasyMicroservices.QuestionsMicroservice.Clients.Tests
 {
     public class MicroserviceClientTest
     {
@@ -45,7 +45,7 @@ Content-Length: 0
         public async Task GetAllTestTest()
         {
             //await OnInitialize();
-            //var microserviceClient = new Comments.GeneratedServices.MicroserviceClient(_routeAddress, HttpClient);
+            //var microserviceClient = new Questions.GeneratedServices.MicroserviceClient(_routeAddress, HttpClient);
             //var microservices = await microserviceClient.GetAllAsync();
             //Assert.True(microservices.IsSuccess);
         }
