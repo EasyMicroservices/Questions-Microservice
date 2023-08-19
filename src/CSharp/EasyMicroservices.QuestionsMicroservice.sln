@@ -1,0 +1,78 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application-Layer", "Application-Layer", "{5095A63E-0C95-4352-8E6B-4586A9340BFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogic-Layer", "BusinessLogic-Layer", "{AAC7D1B4-C636-471D-8894-B1FA3D7995FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess-Layer", "DataAccess-Layer", "{DD5CE7AE-185C-4AB5-A7AD-9CCB6051E804}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test-Layer", "Test-Layer", "{2A1A75C2-9A91-4588-9ADD-046CB14463CA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMicroservices.QuestionsMicroservice.ConsoleApp", "EasyMicroservices.QuestionsMicroservice.ConsoleApp\EasyMicroservices.QuestionsMicroservice.ConsoleApp.csproj", "{A822F4D6-8013-4924-927D-2AFB011C74BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMicroservices.QuestionsMicroservice.Logics", "EasyMicroservices.QuestionsMicroservice.Logics\EasyMicroservices.QuestionsMicroservice.Logics.csproj", "{FD3001CA-7C21-48EE-9496-50B86AB4BBB5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMicroservices.QuestionsMicroservice.Services", "EasyMicroservices.QuestionsMicroservice.Services\EasyMicroservices.QuestionsMicroservice.Services.csproj", "{1520CDA9-8B51-4DDB-87DB-5F72D31AFEB0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMicroservices.QuestionsMicroservice.StartUp", "EasyMicroservices.QuestionsMicroservice.StartUp\EasyMicroservices.QuestionsMicroservice.StartUp.csproj", "{BE7AFC99-49F9-43C7-BA54-610CDF7B5CC7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMicroservices.QuestionsMicroservice.Domain", "EasyMicroservices.QuestionsMicroservice.Domain\EasyMicroservices.QuestionsMicroservice.Domain.csproj", "{2F8DF86F-39C4-4A20-B9F2-63F2379E76C7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMicroservices.QuestionsMicroservice.Database", "EasyMicroservices.QuestionsMicroservice.Database\EasyMicroservices.QuestionsMicroservice.Database.csproj", "{33D87901-FC57-4D02-B73D-33EEDA4F6218}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMicroservices.QuestionsMicroservice.Tests", "EasyMicroservicesQuestionsMicroservice.Tests\EasyMicroservices.QuestionsMicroservice.Tests.csproj", "{550F96F9-7417-4AB1-BB8B-A4BB0E5949D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A822F4D6-8013-4924-927D-2AFB011C74BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A822F4D6-8013-4924-927D-2AFB011C74BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A822F4D6-8013-4924-927D-2AFB011C74BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A822F4D6-8013-4924-927D-2AFB011C74BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD3001CA-7C21-48EE-9496-50B86AB4BBB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD3001CA-7C21-48EE-9496-50B86AB4BBB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD3001CA-7C21-48EE-9496-50B86AB4BBB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD3001CA-7C21-48EE-9496-50B86AB4BBB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1520CDA9-8B51-4DDB-87DB-5F72D31AFEB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1520CDA9-8B51-4DDB-87DB-5F72D31AFEB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1520CDA9-8B51-4DDB-87DB-5F72D31AFEB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1520CDA9-8B51-4DDB-87DB-5F72D31AFEB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE7AFC99-49F9-43C7-BA54-610CDF7B5CC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE7AFC99-49F9-43C7-BA54-610CDF7B5CC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE7AFC99-49F9-43C7-BA54-610CDF7B5CC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE7AFC99-49F9-43C7-BA54-610CDF7B5CC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F8DF86F-39C4-4A20-B9F2-63F2379E76C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F8DF86F-39C4-4A20-B9F2-63F2379E76C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F8DF86F-39C4-4A20-B9F2-63F2379E76C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F8DF86F-39C4-4A20-B9F2-63F2379E76C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33D87901-FC57-4D02-B73D-33EEDA4F6218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33D87901-FC57-4D02-B73D-33EEDA4F6218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33D87901-FC57-4D02-B73D-33EEDA4F6218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33D87901-FC57-4D02-B73D-33EEDA4F6218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{550F96F9-7417-4AB1-BB8B-A4BB0E5949D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{550F96F9-7417-4AB1-BB8B-A4BB0E5949D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{550F96F9-7417-4AB1-BB8B-A4BB0E5949D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{550F96F9-7417-4AB1-BB8B-A4BB0E5949D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A822F4D6-8013-4924-927D-2AFB011C74BB} = {5095A63E-0C95-4352-8E6B-4586A9340BFB}
+		{FD3001CA-7C21-48EE-9496-50B86AB4BBB5} = {AAC7D1B4-C636-471D-8894-B1FA3D7995FB}
+		{1520CDA9-8B51-4DDB-87DB-5F72D31AFEB0} = {AAC7D1B4-C636-471D-8894-B1FA3D7995FB}
+		{BE7AFC99-49F9-43C7-BA54-610CDF7B5CC7} = {AAC7D1B4-C636-471D-8894-B1FA3D7995FB}
+		{2F8DF86F-39C4-4A20-B9F2-63F2379E76C7} = {DD5CE7AE-185C-4AB5-A7AD-9CCB6051E804}
+		{33D87901-FC57-4D02-B73D-33EEDA4F6218} = {DD5CE7AE-185C-4AB5-A7AD-9CCB6051E804}
+		{550F96F9-7417-4AB1-BB8B-A4BB0E5949D8} = {2A1A75C2-9A91-4588-9ADD-046CB14463CA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B8B82934-7EE0-4C86-9065-ADF9092553E1}
+	EndGlobalSection
+EndGlobal
