@@ -22,8 +22,8 @@ jobs:
       - name: Install Android
         run: dotnet workload install android
       - name: Restore dependencies
-        run: dotnet restore ./src/CSharp/EasyMicroservices.CommentsMicroservice.Client.sln
+        run: dotnet restore ./src/CSharp/EasyMicroservices.QuestionsMicroservice.Client.sln
       - name: Build
-        run: dotnet build ./src/CSharp/EasyMicroservices.CommentsMicroservice.Client.sln --no-restore
+        run: dotnet build ./src/CSharp/EasyMicroservices.QuestionsMicroservice.Client.sln --no-restore
       - name: Test
-        run: dotnet test ./src/CSharp/EasyMicroservices.CommentsMicroservice.Client.sln --no-build --verbosity normal
+        run: dotnet test ./src/CSharp/EasyMicroservices.QuestionsMicroservice.Client.sln --no-build --verbosity normal
