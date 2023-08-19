@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EasyMicroservices.CommentsMicroservice
+namespace EasyMicroservices.QuestionsMicroservice
 {
     public class StartUp
     {

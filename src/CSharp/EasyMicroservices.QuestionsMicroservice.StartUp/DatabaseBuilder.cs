@@ -1,4 +1,4 @@
-﻿using EasyMicroservices.CommentsMicroservice.Database;
+﻿using EasyMicroservices.QuestionsMicroservice.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EasyMicroservices.CommentsMicroservice
+namespace EasyMicroservices.QuestionsMicroservice
 {
     public class DatabaseBuilder : IDatabaseBuilder
     {

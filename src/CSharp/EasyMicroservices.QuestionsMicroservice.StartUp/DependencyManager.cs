@@ -1,5 +1,5 @@
-﻿using EasyMicroservices.CommentsMicroservice.Interfaces;
-using EasyMicroservices.CommentsMicroservice;
+﻿using EasyMicroservices.QuestionsMicroservice.Interfaces;
+using EasyMicroservices.QuestionsMicroservice;
 using EasyMicroservices.Configuration.Interfaces;
 using EasyMicroservices.Cores.Database.Interfaces;
 using EasyMicroservices.Cores.Database.Logics;
@@ -10,12 +10,12 @@ using EasyMicroservices.Database.Interfaces;
 using EasyMicroservices.Mapper.CompileTimeMapper.Interfaces;
 using EasyMicroservices.Mapper.CompileTimeMapper.Providers;
 using EasyMicroservices.Mapper.Interfaces;
-using EasyMicroservices.CommentsMicroservice.Database.Contexts;
-using EasyMicroservices.CommentsMicroservice.Interfaces;
+using EasyMicroservices.QuestionsMicroservice.Database.Contexts;
+using EasyMicroservices.QuestionsMicroservice.Interfaces;
 using System;
 using System.Linq;
 
-namespace EasyMicroservices.CommentsMicroservice
+namespace EasyMicroservices.QuestionsMicroservice
 {
     public class DependencyManager : IDependencyManager
     {

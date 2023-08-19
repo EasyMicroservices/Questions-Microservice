@@ -1,11 +1,11 @@
-﻿using EasyMicroservices.CommentsMicroservice.Interfaces;
+﻿using EasyMicroservices.QuestionsMicroservice.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EasyMicroservices.CommentsMicroservice.Helpers
+namespace EasyMicroservices.QuestionsMicroservice.Helpers
 {
     public class ApplicationManager
     {

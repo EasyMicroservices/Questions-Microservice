@@ -1,5 +1,5 @@
 ﻿using EasyMicroservices.Cores.Database.Managers;
-using EasyMicroservices.CommentsMicroservice.Interfaces;
+using EasyMicroservices.QuestionsMicroservice.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,10 +8,9 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using WhiteLables.GeneratedServices;
-using EasyMicroservices.CommentsMicroservice;
-using EasyMicroservices.CommentsMicroservice;
+using EasyMicroservices.QuestionsMicroservice;
 
-namespace EasyMicroservices.CommentsMicroservice
+namespace EasyMicroservices.QuestionsMicroservice
 {
     public class WhiteLabelManager
     {

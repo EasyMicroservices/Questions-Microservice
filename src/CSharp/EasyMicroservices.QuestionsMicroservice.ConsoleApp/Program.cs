@@ -1,4 +1,4 @@
-﻿namespace EasyMicroservices.CommentsMicroservice.ConsoleApp;
+﻿namespace EasyMicroservices.QuestionsMicroservice.ConsoleApp;
 class Program
 {
     static void Main(string[] args)

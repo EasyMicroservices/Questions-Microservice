@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace EasyMicroservices.QuestionsMicroservice.Contracts.Requests
 {
-    public class UpdateQuestionRequestContract
+    public class CreateAnswerRequestContract
     {
-        public long Id { get; set; }
+        public long QuestionId { get; set; }
         public string Title { get; set; }
+        public string UniqueIdentity { get; set; }
     }
 }

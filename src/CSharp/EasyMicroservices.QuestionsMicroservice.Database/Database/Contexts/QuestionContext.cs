@@ -13,6 +13,7 @@ namespace EasyMicroservices.QuestionsMicroservice.Database.Contexts
         }
 
         public DbSet<QuestionEntity> Questions { get; set; }
+        public DbSet<AnswerEntity> Answers { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -30,7 +31,14 @@ namespace EasyMicroservices.QuestionsMicroservice.Database.Contexts
             {
                 model.HasKey(x => x.Id);
             });
+            modelBuilder.Entity<AnswerEntity>(model =>
+            {
+                model.HasKey(x => x.Id);
 
+                model.HasOne(x => x.Question)
+                .WithMany(x => x.Answer)
+                .HasForeignKey(x => x.QuestionId);
+            });
         }
     }
 }

@@ -1,5 +1,5 @@
-using EasyMicroservices.CommentsMicroservice.Database;
-using EasyMicroservices.CommentsMicroservice.Database.Contexts;
+using EasyMicroservices.QuestionsMicroservice.Database;
+using EasyMicroservices.QuestionsMicroservice.Database.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.OpenApi.Any;
@@ -7,15 +7,17 @@ using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using EasyMicroservices.CommentsMicroservice.Database.Entities;
-using EasyMicroservices.CommentsMicroservice.Contracts;
-using EasyMicroservices.CommentsMicroservice.Interfaces;
-using EasyMicroservices.CommentsMicroservice.Database;
-using EasyMicroservices.CommentsMicroservice.Interfaces;
+using EasyMicroservices.QuestionsMicroservice.Database.Entities;
+using EasyMicroservices.QuestionsMicroservice.Contracts;
+using EasyMicroservices.QuestionsMicroservice.Interfaces;
+using EasyMicroservices.QuestionsMicroservice.Database;
+using EasyMicroservices.QuestionsMicroservice.Interfaces;
+using EasyMicroservices.QuestionsMicroservice;
+using EasyMicroservices.QuestionsMicroservice.Contracts.Common;
 using EasyMicroservices.CommentsMicroservice;
-using EasyMicroservices.CommentsMicroservice.Contracts.Common;
+using EasyMicroservices.QuestionsMicroservice.Contracts.Requests;
 
-namespace EasyMicroservices.CommentsMicroservice.WebApi
+namespace EasyMicroservices.QuestionsMicroservice.WebApi
 {
     public class Program
     {
@@ -47,7 +49,8 @@ namespace EasyMicroservices.CommentsMicroservice.WebApi
             string webRootPath = @Directory.GetCurrentDirectory();
 
             builder.Services.AddHttpContextAccessor();
-            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<CommentEntity, CommentContract, CommentContract, CommentContract>());
+            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<QuestionEntity, CreateQuestionRequestContract, UpdateQuestionRequestContract, QuestionContract>());
+            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<AnswerEntity, CreateAnswerRequestContract, UpdateAnswerRequestContract, AnswerContract>());
             builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder());
    
             builder.Services.AddScoped<IDependencyManager>(service => new DependencyManager());

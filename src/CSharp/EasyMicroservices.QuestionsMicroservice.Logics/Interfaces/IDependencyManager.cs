@@ -4,7 +4,7 @@ using EasyMicroservices.Cores.Database.Managers;
 using EasyMicroservices.Database.Interfaces;
 using EasyMicroservices.Mapper.Interfaces;
 
-namespace EasyMicroservices.CommentsMicroservice.Interfaces
+namespace EasyMicroservices.QuestionsMicroservice.Interfaces
 {
     public interface IDependencyManager
     {
