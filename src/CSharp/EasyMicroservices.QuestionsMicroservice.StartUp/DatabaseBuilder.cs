@@ -17,7 +17,7 @@ namespace EasyMicroservices.QuestionsMicroservice
 
         public void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseInMemoryDatabase("CommentDatabase");
+            optionsBuilder.UseInMemoryDatabase("QuestionDatabase");
             //optionsBuilder.UseSqlServer(config.GetConnectionString("local"));
         }
     }

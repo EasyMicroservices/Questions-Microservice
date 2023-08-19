@@ -82,7 +82,7 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi
                 //await context.Database.MigrateAsync();
                 await context.DisposeAsync();
                 var service = scope.ServiceProvider.GetService<WhiteLabelManager>();
-                await service.Initialize("Comment", config.GetValue<string>("RootAddresses:WhiteLabel"), typeof(QuestionContext));
+                await service.Initialize("Question", config.GetValue<string>("RootAddresses:WhiteLabel"), typeof(QuestionContext));
             }
 
             StartUp startUp = new StartUp();
