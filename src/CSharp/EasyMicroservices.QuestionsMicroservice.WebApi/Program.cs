@@ -14,7 +14,6 @@ using EasyMicroservices.QuestionsMicroservice.Database;
 using EasyMicroservices.QuestionsMicroservice.Interfaces;
 using EasyMicroservices.QuestionsMicroservice;
 using EasyMicroservices.QuestionsMicroservice.Contracts.Common;
-using EasyMicroservices.QuestionsMicroservice;
 using EasyMicroservices.QuestionsMicroservice.Contracts.Requests;
 
 namespace EasyMicroservices.QuestionsMicroservice.WebApi
