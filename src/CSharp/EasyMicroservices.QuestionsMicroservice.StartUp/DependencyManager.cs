@@ -52,7 +52,7 @@ namespace EasyMicroservices.QuestionsMicroservice
             {
                 ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             })));
-            
+
             foreach (var type in typeof(IDependencyManager).Assembly.GetTypes())
             {
                 if (typeof(IMapper).IsAssignableFrom(type))

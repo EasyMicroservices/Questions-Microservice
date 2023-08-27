@@ -13,7 +13,7 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
     {
         private readonly IContractLogic<QuestionEntity, CreateQuestionRequestContract, UpdateQuestionRequestContract, QuestionContract, long> _questionlogic;
         private readonly IContractLogic<AnswerEntity, CreateAnswerRequestContract, UpdateAnswerRequestContract, AnswerContract, long> _contractlogic;
-        private readonly IConfiguration _config;   
+        private readonly IConfiguration _config;
         private readonly ContentClient _contentClient;
         private string _contentRoot;
 
@@ -44,7 +44,7 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
                     {
                         Key = $"{getAnswerResult.Result.UniqueIdentity}-Content",
                         LanguageData = new List<LanguageDataContract>
-                        { 
+                        {
                             new LanguageDataContract
                             {
                                 Language = "fa-IR",

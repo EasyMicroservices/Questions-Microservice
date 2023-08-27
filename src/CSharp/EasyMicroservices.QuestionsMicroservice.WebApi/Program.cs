@@ -49,7 +49,7 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi
             builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<QuestionEntity, CreateQuestionRequestContract, UpdateQuestionRequestContract, QuestionContract>());
             builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<AnswerEntity, CreateAnswerRequestContract, UpdateAnswerRequestContract, AnswerContract>());
             builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder());
-   
+
             builder.Services.AddScoped<IDependencyManager>(service => new DependencyManager());
             builder.Services.AddScoped(service => new WhiteLabelManager(service, service.GetService<IDependencyManager>()));
             builder.Services.AddTransient(serviceProvider => new QuestionContext(serviceProvider.GetService<IDatabaseBuilder>()));
@@ -88,7 +88,7 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi
             await startUp.Run(new DependencyManager());
             app.Run();
         }
-        
+
         static void CreateDatabase()
         {
             using (var context = new QuestionContext(new DatabaseBuilder()))
