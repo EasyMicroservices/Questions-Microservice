@@ -48,7 +48,11 @@ namespace EasyMicroservices.QuestionsMicroservice
 
         public virtual IMapperProvider GetMapper()
         {
-            var mapper = new CompileTimeMapperProvider(new EasyMicroservices.Mapper.SerializerMapper.Providers.SerializerMapperProvider(new EasyMicroservices.Serialization.Newtonsoft.Json.Providers.NewtonsoftJsonProvider()));
+            var mapper = new CompileTimeMapperProvider(new EasyMicroservices.Mapper.SerializerMapper.Providers.SerializerMapperProvider(new EasyMicroservices.Serialization.Newtonsoft.Json.Providers.NewtonsoftJsonProvider(new Newtonsoft.Json.JsonSerializerSettings()
+            {
+                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            })));
+            
             foreach (var type in typeof(IDependencyManager).Assembly.GetTypes())
             {
                 if (typeof(IMapper).IsAssignableFrom(type))

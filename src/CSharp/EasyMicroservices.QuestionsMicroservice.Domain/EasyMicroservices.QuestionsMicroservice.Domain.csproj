@@ -7,12 +7,12 @@
 
   <ItemGroup>
     <Folder Include="Contracts\Requests\Filters\" />
-    <Folder Include="Contracts\Responses\" />
     <Folder Include="DataTypes\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EasyMicroservices.Cores.Database" Version="0.0.0.15" />
+    <PackageReference Include="EasyMicroservices.ContentsMicroservice.Clients" Version="0.0.0.4" />
+    <PackageReference Include="EasyMicroservices.Cores.Database" Version="0.0.0.23" />
   </ItemGroup>
 
 </Project>

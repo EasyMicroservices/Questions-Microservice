@@ -10,8 +10,6 @@ using Microsoft.Extensions.DependencyInjection;
 using EasyMicroservices.QuestionsMicroservice.Database.Entities;
 using EasyMicroservices.QuestionsMicroservice.Contracts;
 using EasyMicroservices.QuestionsMicroservice.Interfaces;
-using EasyMicroservices.QuestionsMicroservice.Database;
-using EasyMicroservices.QuestionsMicroservice.Interfaces;
 using EasyMicroservices.QuestionsMicroservice;
 using EasyMicroservices.QuestionsMicroservice.Contracts.Common;
 using EasyMicroservices.QuestionsMicroservice.Contracts.Requests;
@@ -40,9 +38,9 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi
                 options.SchemaFilter<XEnumNamesSchemaFilter>();
             });
 
-            builder.Services.AddDbContext<QuestionContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString(config.GetConnectionString("local")))
-            );
+            //builder.Services.AddDbContext<QuestionContext>(options =>
+            //    options.UseSqlServer(builder.Configuration.GetConnectionString(config.GetConnectionString("local")))
+            //);
 
             //builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormEntity, CreateFormRequestContract, FormContract, FormContract>());
             string webRootPath = @Directory.GetCurrentDirectory();
@@ -55,6 +53,8 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi
             builder.Services.AddScoped<IDependencyManager>(service => new DependencyManager());
             builder.Services.AddScoped(service => new WhiteLabelManager(service, service.GetService<IDependencyManager>()));
             builder.Services.AddTransient(serviceProvider => new QuestionContext(serviceProvider.GetService<IDatabaseBuilder>()));
+            builder.Services.AddTransient<IConfiguration>(serviceProvider => config);
+
             //builder.Services.AddScoped<IFileManagerProvider>(serviceProvider => new FileManagerProvider());
             //builder.Services.AddScoped<IDirectoryManagerProvider, kc>();
 
