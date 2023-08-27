@@ -7,6 +7,6 @@ namespace EasyMicroservices.QuestionsMicroservice.Database.Entities
     public class QuestionEntity : QuestionSchema, IIdSchema<long>
     {
         public long Id { get; set; }
-        public ICollection<AnswerEntity> Answer { get; set; }
+        public ICollection<AnswerEntity> Answers { get; set; }
     }
 }

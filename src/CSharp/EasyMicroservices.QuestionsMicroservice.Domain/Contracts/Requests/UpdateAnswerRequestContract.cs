@@ -10,7 +10,8 @@ namespace EasyMicroservices.QuestionsMicroservice.Contracts.Requests
     {
         public long Id { get; set; }
         public long QuestionId { get; set; }
-        public string Content { get; set; }
+        public string EnglishContent { get; set; }
+        public string PersianContent { get; set; }
         public string UniqueIdentity { get; set; }
     }
 }

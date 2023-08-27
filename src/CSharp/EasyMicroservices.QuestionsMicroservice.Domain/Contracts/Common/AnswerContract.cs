@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using EasyMicroservices.ContentsMicroservice.Clients.Attributes;
 
 namespace EasyMicroservices.QuestionsMicroservice.Contracts.Common
 {
@@ -11,7 +13,10 @@ namespace EasyMicroservices.QuestionsMicroservice.Contracts.Common
     {
         public long Id { get; set; }
         public long QuestionId { get; set; }
+
+        [ContentLanguage]
         public string Content { get; set; }
+
         public string UniqueIdentity { get; set; }
         public DateTime CreationDateTime { get; set; }
         public DateTime? ModificationDateTime { get; set; }

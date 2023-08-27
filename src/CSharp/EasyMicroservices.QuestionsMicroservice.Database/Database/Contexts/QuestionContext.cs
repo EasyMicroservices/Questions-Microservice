@@ -31,12 +31,13 @@ namespace EasyMicroservices.QuestionsMicroservice.Database.Contexts
             {
                 model.HasKey(x => x.Id);
             });
+
             modelBuilder.Entity<AnswerEntity>(model =>
             {
                 model.HasKey(x => x.Id);
 
                 model.HasOne(x => x.Question)
-                .WithMany(x => x.Answer)
+                .WithMany(x => x.Answers)
                 .HasForeignKey(x => x.QuestionId);
             });
         }

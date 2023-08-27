@@ -16,5 +16,7 @@ namespace EasyMicroservices.QuestionsMicroservice.Contracts.Common
         public DateTime? DeletedDateTime { get; set; }
         public string UniqueIdentity { get; set; }
         public bool IsDeleted { get; set; }
+
+        public List<AnswerContract> Answers { get; set; }
     }
 }
