@@ -31,14 +31,14 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ListMessageContract<GetAllQuestionsWithAnswersResponse>> GetAllQuestionsWithAnswers(GetAllQuestionsWithAnswersRequestContract request)
+        public async Task<ListMessageContract<GetAllQuestionsWithAnswersResponseContract>> GetAllQuestionsWithAnswers(GetAllQuestionsWithAnswersRequestContract request)
         {
             var questions = await _contractlogic.GetAllByUniqueIdentity(request, query => query.Include(x => x.Answers));
             if (!questions)
-                return questions.ToListContract<GetAllQuestionsWithAnswersResponse>();
+                return questions.ToListContract<GetAllQuestionsWithAnswersResponseContract>();
 
 
-            var questionsWithAnswers = questions.Result.Select(o => new GetAllQuestionsWithAnswersResponse
+            var questionsWithAnswers = questions.Result.Select(o => new GetAllQuestionsWithAnswersResponseContract
             {
                 Id = o.Id,
                 Title = o.Title,

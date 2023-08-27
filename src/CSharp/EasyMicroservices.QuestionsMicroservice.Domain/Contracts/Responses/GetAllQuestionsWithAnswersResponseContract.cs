@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EasyMicroservices.QuestionsMicroservice.Contracts.Responses
 {
-    public class GetAllQuestionsWithAnswersResponse
+    public class GetAllQuestionsWithAnswersResponseContract
     {
         public long Id { get; set; }
         public string Title { get; set; }
