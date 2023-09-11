@@ -9,7 +9,8 @@ using EasyMicroservices.QuestionsMicroservice.Database.Entities;
 using EasyMicroservices.ServiceContracts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Extensions.Hosting;
+using System.Threading.Tasks;
 
 namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
 {
@@ -29,7 +30,59 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
             _contentRoot = _config.GetValue<string>("RootAddresses:Content");
             _contentClient = new(_contentRoot, new HttpClient());
         }
+        public override async Task<MessageContract<long>> Add(CreateQuestionRequestContract request, CancellationToken cancellationToken = default)
+        {
+            var addQuestionResult = await base.Add(request, cancellationToken);
+            if (addQuestionResult.IsSuccess)
+            {
+                var getQuestionId = await base.GetById(new Cores.Contracts.Requests.GetIdRequestContract<long> { Id = addQuestionResult.Result });
+                var addContent = await _contentClient.AddContentWithKeyAsync(new AddContentWithKeyRequestContract
+                {
+                    Key = $"{getQuestionId.Result.UniqueIdentity}-Title",
+                    LanguageData = request.Titles.Select(x => new Contents.GeneratedServices.LanguageDataContract
+                    {
+                        Data = x.Data,
+                        Language = x.LanguageName,
+                    }).ToList(),
+                });
+                if (addContent.IsSuccess)
+                    return addQuestionResult.Result;
 
+                await _contentClient.HardDeleteByIdAsync(new Int64DeleteRequestContract
+                {
+                    Id = addQuestionResult.Result
+                });
+                return (EasyMicroservices.ServiceContracts.FailedReasonType.Empty, "An error has occured.");
+            }
+            return (EasyMicroservices.ServiceContracts.FailedReasonType.Empty, "An error has occured.");
+
+        }
+        public override async Task<MessageContract<QuestionContract>> Update(UpdateQuestionRequestContract request, CancellationToken cancellationToken = default)
+        {
+            var updateQuestion = await base.Update(request, cancellationToken);
+            if (updateQuestion.IsSuccess)
+            {
+                var getQuestionId = await base.GetById(new Cores.Contracts.Requests.GetIdRequestContract<long> { Id = updateQuestion.Result.Id });
+                var addContent = await _contentClient.AddContentWithKeyAsync(new AddContentWithKeyRequestContract
+                {
+                    Key = $"{getQuestionId.Result.UniqueIdentity}-Title",
+                    LanguageData = request.Titles.Select(x => new Contents.GeneratedServices.LanguageDataContract
+                    {
+                        Data = x.Data,
+                        Language = x.LanguageName,
+                    }).ToList(),
+                });
+                if (addContent.IsSuccess)
+                    return updateQuestion.Result;
+                await _contentClient.HardDeleteByIdAsync(new Int64DeleteRequestContract
+                {
+                    Id = updateQuestion.Result.Id
+                });
+                return (EasyMicroservices.ServiceContracts.FailedReasonType.Empty, "An error has occured.");
+            }
+            return (EasyMicroservices.ServiceContracts.FailedReasonType.Empty, "An error has occured.");
+
+        }
         [HttpPost]
         public async Task<ListMessageContract<GetAllQuestionsWithAnswersResponseContract>> GetAllQuestionsWithAnswers(GetAllQuestionsWithAnswersRequestContract request)
         {
@@ -38,14 +91,14 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
                 return questions.ToListContract<GetAllQuestionsWithAnswersResponseContract>();
 
 
-            var questionsWithAnswers = questions.Result.Select(o => new GetAllQuestionsWithAnswersResponseContract
+            var task = questions.Result.Select(async o => new GetAllQuestionsWithAnswersResponseContract
             {
                 Id = o.Id,
-                Title = o.Title,
+                Title = await ResolveQuestionContent(o , request.LanguageName),
                 UniqueIdentity = o.UniqueIdentity,
                 Answers = Task.WhenAll(o.Answers.Select(async x => new AnswerContract
                 {
-                    Id = o.Id,
+                    Id = x.Id,
                     Content = await ResolveAnswerContent(x, request.LanguageName),
                     CreationDateTime = x.CreationDateTime,
                     DeletedDateTime = x.DeletedDateTime,
@@ -55,7 +108,7 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
                     UniqueIdentity = x.UniqueIdentity
                 })).Result.ToList()
             }).ToList();
-
+            var questionsWithAnswers = (await Task.WhenAll(task)).ToList();
             return questionsWithAnswers;
         }
 
@@ -65,6 +118,13 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
             await contentHelper.ResolveContentLanguage(request, LanguageName);
             var content = request.Content;
             return content;
+        }
+        private async Task<string> ResolveQuestionContent(QuestionContract request, string LanguageName)
+        {
+            ContentLanguageHelper contentHelper = new(_contentClient);
+            await contentHelper.ResolveContentLanguage(request, LanguageName);
+            var title = request.Title;
+            return title;
         }
     }
 }
