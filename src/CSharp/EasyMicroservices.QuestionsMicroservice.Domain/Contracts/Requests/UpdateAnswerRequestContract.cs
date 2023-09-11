@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyMicroservices.QuestionsMicroservice.Contracts.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,7 @@ namespace EasyMicroservices.QuestionsMicroservice.Contracts.Requests
     {
         public long Id { get; set; }
         public long QuestionId { get; set; }
-        public string EnglishContent { get; set; }
-        public string PersianContent { get; set; }
+        public List<LanguageDataContract> Content { get; set; }
         public string UniqueIdentity { get; set; }
     }
 }
