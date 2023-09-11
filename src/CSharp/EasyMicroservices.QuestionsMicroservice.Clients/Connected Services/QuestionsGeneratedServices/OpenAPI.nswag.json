@@ -427,55 +427,6 @@
         }
       }
     },
-    "/api/Question/GetAllQuestionsWithAnswers": {
-      "post": {
-        "tags": [
-          "Question"
-        ],
-        "operationId": "GetAllQuestionsWithAnswers",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetAllQuestionsWithAnswersRequestContract"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetAllQuestionsWithAnswersRequestContract"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/GetAllQuestionsWithAnswersRequestContract"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetAllQuestionsWithAnswersResponseListMessageContract"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetAllQuestionsWithAnswersResponseListMessageContract"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetAllQuestionsWithAnswersResponseListMessageContract"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/Question/Add": {
       "post": {
         "tags": [
@@ -567,6 +518,55 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/QuestionContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Question/GetAllQuestionsWithAnswers": {
+      "post": {
+        "tags": [
+          "Question"
+        ],
+        "operationId": "GetAllQuestionsWithAnswers",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllQuestionsWithAnswersRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllQuestionsWithAnswersRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAllQuestionsWithAnswersRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllQuestionsWithAnswersResponseContractListMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllQuestionsWithAnswersResponseContractListMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllQuestionsWithAnswersResponseContractListMessageContract"
                 }
               }
             }
@@ -991,13 +991,13 @@
             "type": "integer",
             "format": "int64"
           },
-          "englishContent": {
-            "type": "string",
-            "nullable": true
-          },
-          "persianContent": {
-            "type": "string",
-            "nullable": true
+          "contents": {
+            "title": "List<LanguageDataContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/LanguageDataContract"
+            }
           },
           "uniqueIdentity": {
             "type": "string",
@@ -1009,13 +1009,17 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "title": {
-            "type": "string",
-            "nullable": true
-          },
           "uniqueIdentity": {
             "type": "string",
             "nullable": true
+          },
+          "titles": {
+            "title": "List<LanguageDataContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/LanguageDataContract"
+            }
           }
         }
       },
@@ -1178,7 +1182,7 @@
           }
         }
       },
-      "GetAllQuestionsWithAnswersResponse": {
+      "GetAllQuestionsWithAnswersResponseContract": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -1204,8 +1208,8 @@
           }
         }
       },
-      "GetAllQuestionsWithAnswersResponseListMessageContract": {
-        "title": "ListMessageContract<GetAllQuestionsWithAnswersResponse>",
+      "GetAllQuestionsWithAnswersResponseContractListMessageContract": {
+        "title": "ListMessageContract<GetAllQuestionsWithAnswersResponseContract>",
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -1216,11 +1220,11 @@
             "$ref": "#/components/schemas/ErrorContract"
           },
           "result": {
-            "title": "List<GetAllQuestionsWithAnswersResponse>",
+            "title": "List<GetAllQuestionsWithAnswersResponseContract>",
             "type": "array",
             "nullable": true,
             "items": {
-              "$ref": "#/components/schemas/GetAllQuestionsWithAnswersResponse"
+              "$ref": "#/components/schemas/GetAllQuestionsWithAnswersResponseContract"
             }
           },
           "hasItems": {
@@ -1289,6 +1293,20 @@
           },
           "isDelete": {
             "type": "boolean"
+          }
+        }
+      },
+      "LanguageDataContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "languageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -1402,13 +1420,13 @@
             "type": "integer",
             "format": "int64"
           },
-          "englishContent": {
-            "type": "string",
-            "nullable": true
-          },
-          "persianContent": {
-            "type": "string",
-            "nullable": true
+          "content": {
+            "title": "List<LanguageDataContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/LanguageDataContract"
+            }
           },
           "uniqueIdentity": {
             "type": "string",
@@ -1424,9 +1442,13 @@
             "type": "integer",
             "format": "int64"
           },
-          "title": {
-            "type": "string",
-            "nullable": true
+          "titles": {
+            "title": "List<LanguageDataContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/LanguageDataContract"
+            }
           },
           "uniqueIdentity": {
             "type": "string",
