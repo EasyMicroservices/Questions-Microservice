@@ -3293,7 +3293,7 @@ namespace Questions.GeneratedServices
     {
         private long _id;
         private long _questionId;
-        private System.Collections.Generic.ICollection<LanguageDataContract> _content;
+        private System.Collections.Generic.ICollection<LanguageDataContract> _contents;
         private string _uniqueIdentity;
 
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -3326,16 +3326,16 @@ namespace Questions.GeneratedServices
             }
         }
 
-        [Newtonsoft.Json.JsonProperty("content", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<LanguageDataContract> Content
+        [Newtonsoft.Json.JsonProperty("contents", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<LanguageDataContract> Contents
         {
-            get { return _content; }
+            get { return _contents; }
 
             set
             {
-                if (_content != value)
+                if (_contents != value)
                 {
-                    _content = value;
+                    _contents = value;
                     RaisePropertyChanged();
                 }
             }
@@ -3371,7 +3371,6 @@ namespace Questions.GeneratedServices
     {
         private long _id;
         private System.Collections.Generic.ICollection<LanguageDataContract> _titles;
-        private string _uniqueIdentity;
 
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public long Id
@@ -3398,21 +3397,6 @@ namespace Questions.GeneratedServices
                 if (_titles != value)
                 {
                     _titles = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        [Newtonsoft.Json.JsonProperty("uniqueIdentity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UniqueIdentity
-        {
-            get { return _uniqueIdentity; }
-
-            set
-            {
-                if (_uniqueIdentity != value)
-                {
-                    _uniqueIdentity = value;
                     RaisePropertyChanged();
                 }
             }
