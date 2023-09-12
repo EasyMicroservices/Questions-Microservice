@@ -6,6 +6,7 @@ using EasyMicroservices.QuestionsMicroservice.Contracts.Common;
 using EasyMicroservices.QuestionsMicroservice.Contracts.Requests;
 using EasyMicroservices.QuestionsMicroservice.Database.Entities;
 using EasyMicroservices.ServiceContracts;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
 {
@@ -43,19 +44,11 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
                     var addContentResult = await _contentClient.AddContentWithKeyAsync(new AddContentWithKeyRequestContract
                     {
                         Key = $"{getAnswerResult.Result.UniqueIdentity}-Content",
-                        LanguageData = new List<LanguageDataContract>
+                        LanguageData = request.Contents.Select(x=> new Contents.GeneratedServices.LanguageDataContract
                         {
-                            new LanguageDataContract
-                            {
-                                Language = "fa-IR",
-                                Data = request.PersianContent
-                            },
-                            new LanguageDataContract
-                            {
-                                Language = "en-US",
-                                Data = request.EnglishContent
-                            }
-                        }
+                            Language = x.LanguageName,
+                            Data = x.Data
+                        }).ToList(),
                     });
 
                     if (addContentResult.IsSuccess)
@@ -92,19 +85,11 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
                     var UpdateResponse = await _contentClient.UpdateContentWithKeyAsync(new AddContentWithKeyRequestContract
                     {
                         Key = $"{answerResult.Result.UniqueIdentity}-Content",
-                        LanguageData = new List<LanguageDataContract>
+                        LanguageData = request.Content.Select(x => new Contents.GeneratedServices.LanguageDataContract
                         {
-                            new LanguageDataContract
-                            {
-                                Language = "fa-IR",
-                                Data = request.PersianContent
-                            },
-                            new LanguageDataContract
-                            {
-                                Language = "en-US",
-                                Data = request.EnglishContent
-                            }
-                        }
+                            Language = x.LanguageName,
+                            Data = x.Data
+                        }).ToList(),
                     });
 
                     if (UpdateResponse.IsSuccess)

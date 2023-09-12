@@ -891,84 +891,6 @@ namespace Questions.GeneratedServices
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<GetAllQuestionsWithAnswersResponseListMessageContract> GetAllQuestionsWithAnswersAsync(GetAllQuestionsWithAnswersRequestContract body)
-        {
-            return GetAllQuestionsWithAnswersAsync(body, System.Threading.CancellationToken.None);
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<GetAllQuestionsWithAnswersResponseListMessageContract> GetAllQuestionsWithAnswersAsync(GetAllQuestionsWithAnswersRequestContract body, System.Threading.CancellationToken cancellationToken)
-        {
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Question/GetAllQuestionsWithAnswers");
-
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
-                    var content_ = new System.Net.Http.StringContent(json_);
-                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                    request_.Content = content_;
-                    request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<GetAllQuestionsWithAnswersResponseListMessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return objectResponse_.Object;
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual System.Threading.Tasks.Task<Int64MessageContract> AddAsync(CreateQuestionRequestContract body)
         {
             return AddAsync(body, System.Threading.CancellationToken.None);
@@ -1097,6 +1019,84 @@ namespace Questions.GeneratedServices
                         if (status_ == 200)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<QuestionContractMessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<GetAllQuestionsWithAnswersResponseContractListMessageContract> GetAllQuestionsWithAnswersAsync(GetAllQuestionsWithAnswersRequestContract body)
+        {
+            return GetAllQuestionsWithAnswersAsync(body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<GetAllQuestionsWithAnswersResponseContractListMessageContract> GetAllQuestionsWithAnswersAsync(GetAllQuestionsWithAnswersRequestContract body, System.Threading.CancellationToken cancellationToken)
+        {
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Question/GetAllQuestionsWithAnswers");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<GetAllQuestionsWithAnswersResponseContractListMessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -2054,8 +2054,7 @@ namespace Questions.GeneratedServices
     public partial class CreateAnswerRequestContract : System.ComponentModel.INotifyPropertyChanged
     {
         private long _questionId;
-        private string _englishContent;
-        private string _persianContent;
+        private System.Collections.Generic.ICollection<LanguageDataContract> _contents;
         private string _uniqueIdentity;
 
         [Newtonsoft.Json.JsonProperty("questionId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -2073,31 +2072,16 @@ namespace Questions.GeneratedServices
             }
         }
 
-        [Newtonsoft.Json.JsonProperty("englishContent", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string EnglishContent
+        [Newtonsoft.Json.JsonProperty("contents", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<LanguageDataContract> Contents
         {
-            get { return _englishContent; }
+            get { return _contents; }
 
             set
             {
-                if (_englishContent != value)
+                if (_contents != value)
                 {
-                    _englishContent = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        [Newtonsoft.Json.JsonProperty("persianContent", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PersianContent
-        {
-            get { return _persianContent; }
-
-            set
-            {
-                if (_persianContent != value)
-                {
-                    _persianContent = value;
+                    _contents = value;
                     RaisePropertyChanged();
                 }
             }
@@ -2131,23 +2115,8 @@ namespace Questions.GeneratedServices
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
     public partial class CreateQuestionRequestContract : System.ComponentModel.INotifyPropertyChanged
     {
-        private string _title;
         private string _uniqueIdentity;
-
-        [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Title
-        {
-            get { return _title; }
-
-            set
-            {
-                if (_title != value)
-                {
-                    _title = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
+        private System.Collections.Generic.ICollection<LanguageDataContract> _titles;
 
         [Newtonsoft.Json.JsonProperty("uniqueIdentity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string UniqueIdentity
@@ -2159,6 +2128,21 @@ namespace Questions.GeneratedServices
                 if (_uniqueIdentity != value)
                 {
                     _uniqueIdentity = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("titles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<LanguageDataContract> Titles
+        {
+            get { return _titles; }
+
+            set
+            {
+                if (_titles != value)
+                {
+                    _titles = value;
                     RaisePropertyChanged();
                 }
             }
@@ -2577,7 +2561,7 @@ namespace Questions.GeneratedServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
-    public partial class GetAllQuestionsWithAnswersResponse : System.ComponentModel.INotifyPropertyChanged
+    public partial class GetAllQuestionsWithAnswersResponseContract : System.ComponentModel.INotifyPropertyChanged
     {
         private long _id;
         private string _title;
@@ -2655,11 +2639,11 @@ namespace Questions.GeneratedServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
-    public partial class GetAllQuestionsWithAnswersResponseListMessageContract : System.ComponentModel.INotifyPropertyChanged
+    public partial class GetAllQuestionsWithAnswersResponseContractListMessageContract : System.ComponentModel.INotifyPropertyChanged
     {
         private bool _isSuccess;
         private ErrorContract _error;
-        private System.Collections.Generic.ICollection<GetAllQuestionsWithAnswersResponse> _result;
+        private System.Collections.Generic.ICollection<GetAllQuestionsWithAnswersResponseContract> _result;
         private bool _hasItems;
 
         [Newtonsoft.Json.JsonProperty("isSuccess", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -2693,7 +2677,7 @@ namespace Questions.GeneratedServices
         }
 
         [Newtonsoft.Json.JsonProperty("result", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<GetAllQuestionsWithAnswersResponse> Result
+        public System.Collections.Generic.ICollection<GetAllQuestionsWithAnswersResponseContract> Result
         {
             get { return _result; }
 
@@ -2915,6 +2899,52 @@ namespace Questions.GeneratedServices
                 if (_isDelete != value)
                 {
                     _isDelete = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
+        {
+            var handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
+    public partial class LanguageDataContract : System.ComponentModel.INotifyPropertyChanged
+    {
+        private string _languageName;
+        private string _data;
+
+        [Newtonsoft.Json.JsonProperty("languageName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string LanguageName
+        {
+            get { return _languageName; }
+
+            set
+            {
+                if (_languageName != value)
+                {
+                    _languageName = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("data", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Data
+        {
+            get { return _data; }
+
+            set
+            {
+                if (_data != value)
+                {
+                    _data = value;
                     RaisePropertyChanged();
                 }
             }
@@ -3263,8 +3293,7 @@ namespace Questions.GeneratedServices
     {
         private long _id;
         private long _questionId;
-        private string _englishContent;
-        private string _persianContent;
+        private System.Collections.Generic.ICollection<LanguageDataContract> _content;
         private string _uniqueIdentity;
 
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -3297,31 +3326,16 @@ namespace Questions.GeneratedServices
             }
         }
 
-        [Newtonsoft.Json.JsonProperty("englishContent", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string EnglishContent
+        [Newtonsoft.Json.JsonProperty("content", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<LanguageDataContract> Content
         {
-            get { return _englishContent; }
+            get { return _content; }
 
             set
             {
-                if (_englishContent != value)
+                if (_content != value)
                 {
-                    _englishContent = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        [Newtonsoft.Json.JsonProperty("persianContent", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PersianContent
-        {
-            get { return _persianContent; }
-
-            set
-            {
-                if (_persianContent != value)
-                {
-                    _persianContent = value;
+                    _content = value;
                     RaisePropertyChanged();
                 }
             }
@@ -3356,7 +3370,7 @@ namespace Questions.GeneratedServices
     public partial class UpdateQuestionRequestContract : System.ComponentModel.INotifyPropertyChanged
     {
         private long _id;
-        private string _title;
+        private System.Collections.Generic.ICollection<LanguageDataContract> _titles;
         private string _uniqueIdentity;
 
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -3374,16 +3388,16 @@ namespace Questions.GeneratedServices
             }
         }
 
-        [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Title
+        [Newtonsoft.Json.JsonProperty("titles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<LanguageDataContract> Titles
         {
-            get { return _title; }
+            get { return _titles; }
 
             set
             {
-                if (_title != value)
+                if (_titles != value)
                 {
-                    _title = value;
+                    _titles = value;
                     RaisePropertyChanged();
                 }
             }
