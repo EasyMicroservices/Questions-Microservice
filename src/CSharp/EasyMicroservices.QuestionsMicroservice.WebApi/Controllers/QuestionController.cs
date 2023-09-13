@@ -104,7 +104,7 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
             var task = questions.Result.Select(async o => new GetAllQuestionsWithAnswersResponseContract
             {
                 Id = o.Id,
-                Title = await ResolveQuestionContent(o , request.LanguageName),
+                Title = await ResolveQuestionContent(o, request.LanguageName),
                 UniqueIdentity = o.UniqueIdentity,
                 Answers = Task.WhenAll(o.Answers.Select(async x => new AnswerContract
                 {
