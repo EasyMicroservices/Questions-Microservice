@@ -11,7 +11,7 @@ namespace EasyMicroservices.QuestionsMicroservice.Contracts.Requests
     {
         public long Id { get; set; }
         public long QuestionId { get; set; }
-        public List<LanguageDataContract> Content { get; set; }
+        public List<LanguageDataContract> Contents { get; set; }
         public string UniqueIdentity { get; set; }
     }
 }

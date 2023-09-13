@@ -59,27 +59,37 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
         }
         public override async Task<MessageContract<QuestionContract>> Update(UpdateQuestionRequestContract request, CancellationToken cancellationToken = default)
         {
-            var updateQuestion = await base.Update(request, cancellationToken);
-            if (updateQuestion.IsSuccess)
+            var getQuestion = await base.GetById(new Cores.Contracts.Requests.GetIdRequestContract<long> { Id = request.Id });
+
+            if (getQuestion.IsSuccess)
             {
-                var getQuestionId = await base.GetById(new Cores.Contracts.Requests.GetIdRequestContract<long> { Id = updateQuestion.Result.Id });
-                var addContent = await _contentClient.AddContentWithKeyAsync(new AddContentWithKeyRequestContract
+                request.UniqueIdentity = getQuestion.Result.UniqueIdentity;
+                var updateQuestion = await _contractlogic.Update(request, cancellationToken);
+                if (!updateQuestion.IsSuccess)
+                    return (EasyMicroservices.ServiceContracts.FailedReasonType.Empty, "An error has occured.");
+
+                if (updateQuestion.IsSuccess)
                 {
-                    Key = $"{getQuestionId.Result.UniqueIdentity}-Title",
-                    LanguageData = request.Titles.Select(x => new Contents.GeneratedServices.LanguageDataContract
+                    var getQuestionId = await base.GetById(new Cores.Contracts.Requests.GetIdRequestContract<long> { Id = updateQuestion.Result.Id });
+                    var addContent = await _contentClient.UpdateContentWithKeyAsync(new AddContentWithKeyRequestContract
                     {
-                        Data = x.Data,
-                        Language = x.LanguageName,
-                    }).ToList(),
-                });
-                if (addContent.IsSuccess)
-                    return updateQuestion.Result;
-                await _contentClient.HardDeleteByIdAsync(new Int64DeleteRequestContract
-                {
-                    Id = updateQuestion.Result.Id
-                });
-                return (EasyMicroservices.ServiceContracts.FailedReasonType.Empty, "An error has occured.");
+                        Key = $"{getQuestionId.Result.UniqueIdentity}-Title",
+                        LanguageData = request.Titles.Select(x => new Contents.GeneratedServices.LanguageDataContract
+                        {
+                            Data = x.Data,
+                            Language = x.LanguageName,
+                        }).ToList(),
+                    });
+                    if (addContent.IsSuccess)
+                        return updateQuestion.Result;
+                    await _contentClient.HardDeleteByIdAsync(new Int64DeleteRequestContract
+                    {
+                        Id = updateQuestion.Result.Id
+                    });
+                    return (EasyMicroservices.ServiceContracts.FailedReasonType.Empty, "An error has occured.");
+                }
             }
+
             return (EasyMicroservices.ServiceContracts.FailedReasonType.Empty, "An error has occured.");
 
         }

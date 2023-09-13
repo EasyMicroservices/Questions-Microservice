@@ -13,6 +13,7 @@
   <ItemGroup>
     <PackageReference Include="EasyMicroservices.ContentsMicroservice.Clients" Version="0.0.0.4" />
     <PackageReference Include="EasyMicroservices.Cores.Database" Version="0.0.0.23" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
   </ItemGroup>
 
 </Project>

@@ -85,7 +85,7 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
                     var UpdateResponse = await _contentClient.UpdateContentWithKeyAsync(new AddContentWithKeyRequestContract
                     {
                         Key = $"{answerResult.Result.UniqueIdentity}-Content",
-                        LanguageData = request.Content.Select(x => new Contents.GeneratedServices.LanguageDataContract
+                        LanguageData = request.Contents.Select(x => new Contents.GeneratedServices.LanguageDataContract
                         {
                             Language = x.LanguageName,
                             Data = x.Data

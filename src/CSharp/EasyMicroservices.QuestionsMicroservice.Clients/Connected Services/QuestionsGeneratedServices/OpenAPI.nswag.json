@@ -1420,7 +1420,7 @@
             "type": "integer",
             "format": "int64"
           },
-          "content": {
+          "contents": {
             "title": "List<LanguageDataContract>",
             "type": "array",
             "nullable": true,
@@ -1449,10 +1449,6 @@
             "items": {
               "$ref": "#/components/schemas/LanguageDataContract"
             }
-          },
-          "uniqueIdentity": {
-            "type": "string",
-            "nullable": true
           }
         }
       },
