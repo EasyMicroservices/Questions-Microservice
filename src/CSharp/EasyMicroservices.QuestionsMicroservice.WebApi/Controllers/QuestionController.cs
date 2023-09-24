@@ -1,6 +1,7 @@
 ﻿using Contents.GeneratedServices;
 using EasyMicroservices.ContentsMicroservice.Clients.Helpers;
 using EasyMicroservices.Cores.AspCoreApi;
+using EasyMicroservices.Cores.Contracts.Requests;
 using EasyMicroservices.Cores.Database.Interfaces;
 using EasyMicroservices.QuestionsMicroservice.Contracts.Common;
 using EasyMicroservices.QuestionsMicroservice.Contracts.Requests;
@@ -120,6 +121,63 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
             }).ToList();
             var questionsWithAnswers = (await Task.WhenAll(task)).ToList();
             return questionsWithAnswers;
+        }
+
+        [HttpPost]
+        public async Task<MessageContract<QuestionResponseContract>> GetQuestionById(GetIdRequestContract<long> request)
+        {
+            var question = await _contractlogic.GetById(request, query => query.Include(x => x.Answers));
+            if (!question)
+                return question.ToContract<QuestionResponseContract>();
+
+            var questionTitle = await _contentClient.GetAllByKeyAsync(new GetAllByKeyRequestContract
+            {
+                Key = $"{question.Result.UniqueIdentity}-Title"
+            });
+            if (!questionTitle.IsSuccess)
+                return questionTitle.ToContract<QuestionResponseContract>();
+            List<AnswerResponseContract> asnwers = new List<AnswerResponseContract>();
+            foreach (var answer in question.Result.Answers)
+            {
+                var answerContent = await _contentClient.GetAllByKeyAsync(new GetAllByKeyRequestContract
+                {
+                    Key = $"{answer.UniqueIdentity}-Content"
+                });
+                if (!answerContent.IsSuccess)
+                    return answerContent.ToContract<QuestionResponseContract>();
+                asnwers.AddRange(question.Result.Answers.Select(x => new AnswerResponseContract
+                {
+                    Id = x.Id,
+                    Contents = answerContent.Result.Select(x => new Contracts.Common.LanguageDataContract()
+                    {
+                        Data = x.Data,
+                        LanguageName = x.Language?.Name
+                    }).ToList(),
+                    CreationDateTime = x.CreationDateTime,
+                    DeletedDateTime = x.DeletedDateTime,
+                    IsDeleted = x.IsDeleted,
+                    ModificationDateTime = x.ModificationDateTime,
+                    QuestionId = x.QuestionId,
+                    UniqueIdentity = x.UniqueIdentity
+                }));
+            }
+
+            var questionResult = question.Result;
+            return new QuestionResponseContract()
+            {
+                Id = questionResult.Id,
+                Titles = questionTitle.Result.Select(x=>new Contracts.Common.LanguageDataContract()
+                {
+                     Data = x.Data,
+                     LanguageName = x.Language?.Name
+                }).ToList(),
+                UniqueIdentity = questionResult.UniqueIdentity,
+                CreationDateTime = questionResult.CreationDateTime,
+                DeletedDateTime = questionResult.DeletedDateTime,
+                IsDeleted = questionResult.IsDeleted,
+                ModificationDateTime = questionResult.ModificationDateTime,
+               Answers = asnwers
+            };
         }
 
         private async Task<string> ResolveAnswerContent(AnswerContract request, string LanguageName)
