@@ -166,17 +166,17 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
             return new QuestionResponseContract()
             {
                 Id = questionResult.Id,
-                Titles = questionTitle.Result.Select(x=>new Contracts.Common.LanguageDataContract()
+                Titles = questionTitle.Result.Select(x => new Contracts.Common.LanguageDataContract()
                 {
-                     Data = x.Data,
-                     LanguageName = x.Language?.Name
+                    Data = x.Data,
+                    LanguageName = x.Language?.Name
                 }).ToList(),
                 UniqueIdentity = questionResult.UniqueIdentity,
                 CreationDateTime = questionResult.CreationDateTime,
                 DeletedDateTime = questionResult.DeletedDateTime,
                 IsDeleted = questionResult.IsDeleted,
                 ModificationDateTime = questionResult.ModificationDateTime,
-               Answers = asnwers
+                Answers = asnwers
             };
         }
 
