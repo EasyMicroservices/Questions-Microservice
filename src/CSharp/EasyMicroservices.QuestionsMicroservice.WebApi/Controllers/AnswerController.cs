@@ -1,5 +1,6 @@
 ﻿using Contents.GeneratedServices;
 using EasyMicroservices.Cores.AspCoreApi;
+using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
 using EasyMicroservices.Cores.Contracts.Requests;
 using EasyMicroservices.Cores.Database.Interfaces;
 using EasyMicroservices.QuestionsMicroservice.Contracts.Common;
@@ -14,20 +15,22 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
     {
         private readonly IContractLogic<QuestionEntity, CreateQuestionRequestContract, UpdateQuestionRequestContract, QuestionContract, long> _questionlogic;
         private readonly IContractLogic<AnswerEntity, CreateAnswerRequestContract, UpdateAnswerRequestContract, AnswerContract, long> _contractlogic;
-        private readonly IConfiguration _config;
+        public string _contentRoot;
         private readonly ContentClient _contentClient;
-        private string _contentRoot;
+        private readonly IConfiguration _config;
 
-        public AnswerController(IContractLogic<QuestionEntity, CreateQuestionRequestContract, UpdateQuestionRequestContract, QuestionContract, long> questionlogic, IContractLogic<AnswerEntity, CreateAnswerRequestContract, UpdateAnswerRequestContract, AnswerContract, long> contractLogic, IConfiguration config) : base(contractLogic)
+        readonly IUnitOfWork unitOfWork;
+        public AnswerController(IUnitOfWork _unitOfWork, IConfiguration config) : base(_unitOfWork)
         {
-            _contractlogic = contractLogic;
-            _questionlogic = questionlogic;
+            unitOfWork = _unitOfWork;
+            _questionlogic = _unitOfWork.GetContractLogic<QuestionEntity, CreateQuestionRequestContract, UpdateQuestionRequestContract, QuestionContract, long>();
+            _contractlogic = _unitOfWork.GetContractLogic<AnswerEntity, CreateAnswerRequestContract, UpdateAnswerRequestContract, AnswerContract, long>();
 
             _config = config;
-
             _contentRoot = _config.GetValue<string>("RootAddresses:Content");
             _contentClient = new(_contentRoot, new HttpClient());
         }
+
         public override async Task<MessageContract<long>> Add(CreateAnswerRequestContract request, CancellationToken cancellationToken = default)
         {
             var checkQuestionId = await _questionlogic.GetById(new GetIdRequestContract<long>() { Id = request.QuestionId });
