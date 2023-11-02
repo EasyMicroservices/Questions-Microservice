@@ -3,7 +3,7 @@ using EasyMicroservices.Cores.AspEntityFrameworkCoreApi;
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
 using EasyMicroservices.QuestionsMicroservice;
 
-namespace EasyMicroservices.ContentsMicroservice.WebApi
+namespace EasyMicroservices.QuestionsMicroservice.WebApi
 {
     public class Program
     {

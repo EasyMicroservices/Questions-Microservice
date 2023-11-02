@@ -8,9 +8,8 @@ namespace EasyMicroservices.QuestionsMicroservice.Database.Contexts
     public class QuestionContext : RelationalCoreContext
     {
         IEntityFrameworkCoreDatabaseBuilder _builder;
-        public QuestionContext(IEntityFrameworkCoreDatabaseBuilder builder)
+        public QuestionContext(IEntityFrameworkCoreDatabaseBuilder builder) : base(builder)
         {
-            _builder = builder;
         }
 
         public DbSet<QuestionEntity> Questions { get; set; }
