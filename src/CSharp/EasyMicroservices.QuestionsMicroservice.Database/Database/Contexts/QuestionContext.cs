@@ -1,15 +1,15 @@
 ﻿using EasyMicroservices.QuestionsMicroservice.Database.Entities;
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
 
 namespace EasyMicroservices.QuestionsMicroservice.Database.Contexts
 {
     public class QuestionContext : RelationalCoreContext
     {
-        IDatabaseBuilder _builder;
-        public QuestionContext(IDatabaseBuilder builder)
+        IEntityFrameworkCoreDatabaseBuilder _builder;
+        public QuestionContext(IEntityFrameworkCoreDatabaseBuilder builder) : base(builder)
         {
-            _builder = builder;
         }
 
         public DbSet<QuestionEntity> Questions { get; set; }

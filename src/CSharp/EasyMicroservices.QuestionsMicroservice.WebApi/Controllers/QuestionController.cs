@@ -1,6 +1,7 @@
 ﻿using Contents.GeneratedServices;
 using EasyMicroservices.ContentsMicroservice.Clients.Helpers;
 using EasyMicroservices.Cores.AspCoreApi;
+using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
 using EasyMicroservices.Cores.Contracts.Requests;
 using EasyMicroservices.Cores.Database.Interfaces;
 using EasyMicroservices.QuestionsMicroservice.Contracts.Common;
@@ -22,15 +23,19 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
         public string _contentRoot;
         private readonly ContentClient _contentClient;
         private readonly IConfiguration _config;
-        public QuestionController(IContractLogic<QuestionEntity, CreateQuestionRequestContract, UpdateQuestionRequestContract, QuestionContract, long> contractLogic, IContractLogic<AnswerEntity, CreateAnswerRequestContract, UpdateAnswerRequestContract, AnswerContract, long> answerLogic, IConfiguration config) : base(contractLogic)
+
+        readonly IUnitOfWork unitOfWork;
+        public QuestionController(IUnitOfWork _unitOfWork, IConfiguration config) : base(_unitOfWork)
         {
-            _contractlogic = contractLogic;
-            _answerLogic = answerLogic;
+            unitOfWork = _unitOfWork;
+            _contractlogic = _unitOfWork.GetContractLogic<QuestionEntity, CreateQuestionRequestContract, UpdateQuestionRequestContract, QuestionContract, long>();
+            _answerLogic = _unitOfWork.GetContractLogic<AnswerEntity, CreateAnswerRequestContract, UpdateAnswerRequestContract, AnswerContract, long>();
 
             _config = config;
             _contentRoot = _config.GetValue<string>("RootAddresses:Content");
             _contentClient = new(_contentRoot, new HttpClient());
         }
+
         public override async Task<MessageContract<long>> Add(CreateQuestionRequestContract request, CancellationToken cancellationToken = default)
         {
             var addQuestionResult = await base.Add(request, cancellationToken);
@@ -97,7 +102,7 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi.Controllers
         [HttpPost]
         public async Task<ListMessageContract<GetAllQuestionsWithAnswersResponseContract>> GetAllQuestionsWithAnswers(GetAllQuestionsWithAnswersRequestContract request)
         {
-            var questions = await _contractlogic.GetAllByUniqueIdentity(request, query => query.Include(x => x.Answers));
+            var questions = await _contractlogic.GetAllByUniqueIdentity(request, Cores.DataTypes.GetUniqueIdentityType.All, query => query.Include(x => x.Answers));
             if (!questions)
                 return questions.ToListContract<GetAllQuestionsWithAnswersResponseContract>();
 
