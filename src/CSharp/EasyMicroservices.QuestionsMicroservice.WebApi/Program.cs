@@ -10,7 +10,7 @@ namespace EasyMicroservices.QuestionsMicroservice.WebApi
         public static async Task Main(string[] args)
         {
             var app = CreateBuilder(args);
-            var build = await app.Build<QuestionContext>();
+            var build = await app.Build<QuestionContext>(true);
             build.MapControllers();
             build.Run();
         }
